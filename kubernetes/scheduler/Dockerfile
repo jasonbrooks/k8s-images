@@ -1,4 +1,4 @@
-FROM fedora/kubernetes-master
+FROM jasonbrooks/kubernetes-master:fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 COPY launch.sh /usr/bin/kube-scheduler-docker.sh
