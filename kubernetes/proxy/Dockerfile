@@ -1,7 +1,7 @@
 FROM fedora/kubernetes-node
-MAINTAINER Solly Ross <sross@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum install -y iptables && yum clean all
+RUN dnf install -y iptables && dnf clean all
 
 LABEL RUN='/usr/bin/docker run -d --net=host --privileged ${OPT1} --name ${NAME} ${IMAGE} ${OPT3}'
 

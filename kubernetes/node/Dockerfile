@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER Solly Ross <sross@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum install -y kubernetes-node && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf install -y kubernetes-node && dnf clean all

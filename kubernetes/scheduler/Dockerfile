@@ -1,5 +1,5 @@
-FROM fedora
-MAINTAINER Solly Ross <sross@redhat.com>
+FROM fedora/kubernetes-master
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 COPY launch.sh /usr/bin/kube-scheduler-docker.sh
 

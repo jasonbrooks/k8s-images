@@ -1,11 +1,11 @@
 FROM fedora/kubernetes-node
-MAINTAINER Solly Ross <sross@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # NOTE: kubelet wants pidof (from sysvinit-tools), but it can't use it
 # properly in a container, so we skip installing it
 
 # Containerized kubelet requires nsenter
-RUN yum install -y util-linux && yum clean all
+RUN dnf install -y util-linux && dnf clean all
 
 # cAdvisor wants /etc/machine-id
 # containerized kubelet needs /:/rootfs and /var/lib/kubelet to mount volumes
