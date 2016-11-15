@@ -1,4 +1,4 @@
-FROM centos/kubernetes-node
+FROM jasonbrooks/kubernetes-node:centos
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
 
 RUN yum install -y iptables && yum clean all
