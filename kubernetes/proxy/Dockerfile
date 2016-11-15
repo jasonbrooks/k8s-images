@@ -1,4 +1,4 @@
-FROM fedora/kubernetes-node
+FROM jasonbrooks/kubernetes-node:fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN dnf install -y iptables && dnf clean all
