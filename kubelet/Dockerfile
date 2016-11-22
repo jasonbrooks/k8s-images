@@ -1,4 +1,4 @@
-FROM jasonbrooks/kubernetes-node:fedora
+FROM jasonbrooks/kubernetes-node:f25
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # NOTE: kubelet wants pidof (from sysvinit-tools), but it can't use it
