@@ -1,15 +1,16 @@
-FROM jasonbrooks/kubernetes-node:f25
+FROM registry.fedoraproject.org/kubernetes-node:25
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-# NOTE: kubelet wants pidof (from sysvinit-tools), but it can't use it
-# properly in a container, so we skip installing it
+ENV NAME=kubelet VERSION=0.1 RELEASE=1 ARCH=x86_64
+LABEL BZComponent="$NAME" \
+        Name="$FGC/$NAME" \
+        Version="$VERSION" \
+        Release="$RELEASE.$DISTTAG" \
+        Architecture="$ARCH"
 
-# Containerized kubelet requires nsenter
 RUN dnf install -y util-linux && dnf clean all
 
-# cAdvisor wants /etc/machine-id
-# containerized kubelet needs /:/rootfs and /var/lib/kubelet to mount volumes
-LABEL RUN='/usr/bin/docker run -d --privileged --net=host ${OPT1} -v /sys:/sys:ro -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker -v /etc/machine-id:/etc/machine-id:ro -v /var/lib/kubelet:/var/lib/kubelet -v /:/rootfs --name ${NAME} ${IMAGE} ${OPT3}'
+LABEL RUN=/usr/bin/docker run -d --privileged --net=host --pid=host -v /:/rootfs:ro -v /sys:/sys:rw -v /var/run:/var/run:rw -v /run:/run:rw -v /var/lib/docker:/var/lib/docker:rw -v /var/lib/kubelet:/var/lib/kubelet:slave -v /var/log/containers:/var/log/containers:rw
 
 COPY launch.sh /usr/bin/kubelet-docker.sh
 
