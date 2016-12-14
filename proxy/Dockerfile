@@ -8,8 +8,6 @@ LABEL BZComponent="$NAME" \
         Release="$RELEASE.$DISTTAG" \
         Architecture="$ARCH"
 
-RUN dnf install -y iptables && dnf clean all
-
 LABEL RUN /usr/bin/docker run -d --privileged --net=host 
 
 COPY launch.sh /usr/bin/kube-proxy-docker.sh
