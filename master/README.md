@@ -2,7 +2,6 @@ dockerfiles-fedora-kubernetes-master
 ====================================
 
 Base fedora dockerfile for the kubernetes master services.
-Tested with Docker 1.7.1.
 
 Get Docker version
 ```
