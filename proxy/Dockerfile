@@ -1,7 +1,7 @@
 FROM jasonbrooks/kubernetes-node:f25
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN dnf install -y iptables && dnf clean all
+RUN dnf install -y iptables conntrack-tools && dnf clean all
 
 LABEL RUN='/usr/bin/docker run -d --net=host --privileged ${OPT1} --name ${NAME} ${IMAGE} ${OPT3}'
 
