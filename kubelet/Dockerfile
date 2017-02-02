@@ -5,7 +5,7 @@ MAINTAINER http://fedoraproject.org/wiki/Cloud
 # properly in a container, so we skip installing it
 
 # Containerized kubelet requires nsenter
-RUN dnf install -y util-linux && dnf clean all
+RUN dnf install -y util-linux ethtool && dnf clean all
 
 # cAdvisor wants /etc/machine-id
 # containerized kubelet needs /:/rootfs and /var/lib/kubelet to mount volumes
