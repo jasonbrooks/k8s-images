@@ -1,7 +1,7 @@
 FROM jasonbrooks/kubernetes-node:centos
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
 
-RUN yum install -y iptables && yum clean all
+RUN yum install -y iptables conntrack-tools && yum clean all
 
 LABEL RUN='/usr/bin/docker run -d --net=host --privileged ${OPT1} --name ${NAME} ${IMAGE} ${OPT3}'
 
